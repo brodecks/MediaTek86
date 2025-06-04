@@ -41,8 +41,9 @@
             this.txtTel = new System.Windows.Forms.TextBox();
             this.txtPrenom = new System.Windows.Forms.TextBox();
             this.txtNom = new System.Windows.Forms.TextBox();
-            this.lstServiceAffect = new System.Windows.Forms.ListBox();
             this.btnAnnuler = new System.Windows.Forms.Button();
+            this.cboService = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonnel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,15 +157,6 @@
             this.txtNom.Size = new System.Drawing.Size(152, 22);
             this.txtNom.TabIndex = 12;
             // 
-            // lstServiceAffect
-            // 
-            this.lstServiceAffect.FormattingEnabled = true;
-            this.lstServiceAffect.ItemHeight = 16;
-            this.lstServiceAffect.Location = new System.Drawing.Point(470, 301);
-            this.lstServiceAffect.Name = "lstServiceAffect";
-            this.lstServiceAffect.Size = new System.Drawing.Size(172, 84);
-            this.lstServiceAffect.TabIndex = 13;
-            // 
             // btnAnnuler
             // 
             this.btnAnnuler.Location = new System.Drawing.Point(352, 251);
@@ -174,13 +166,31 @@
             this.btnAnnuler.Text = "annuler";
             this.btnAnnuler.UseVisualStyleBackColor = true;
             // 
+            // cboService
+            // 
+            this.cboService.FormattingEnabled = true;
+            this.cboService.Location = new System.Drawing.Point(494, 301);
+            this.cboService.Name = "cboService";
+            this.cboService.Size = new System.Drawing.Size(121, 24);
+            this.cboService.TabIndex = 15;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(437, 304);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 16);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "service";
+            // 
             // FrmMediatek
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(714, 536);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cboService);
             this.Controls.Add(this.btnAnnuler);
-            this.Controls.Add(this.lstServiceAffect);
             this.Controls.Add(this.txtNom);
             this.Controls.Add(this.txtPrenom);
             this.Controls.Add(this.txtTel);
@@ -218,8 +228,9 @@
         private System.Windows.Forms.TextBox txtTel;
         private System.Windows.Forms.TextBox txtPrenom;
         private System.Windows.Forms.TextBox txtNom;
-        private System.Windows.Forms.ListBox lstServiceAffect;
         private System.Windows.Forms.Button btnAnnuler;
+        private System.Windows.Forms.ComboBox cboService;
+        private System.Windows.Forms.Label label5;
     }
 }
 
