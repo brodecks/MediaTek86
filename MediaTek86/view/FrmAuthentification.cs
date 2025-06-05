@@ -15,15 +15,27 @@ namespace MediaTek86
     public partial class FrmAuthentification : Form
     {
         private FrmAuthentificationController controller;
+        /// <summary>
+        /// construction des composants graphique et appel des autres initialisations
+        /// </summary>
         public FrmAuthentification()
         {
             InitializeComponent();
             Init();
         }
+        /// <summary>
+        /// initialisations :
+        /// création du controleur
+        /// </summary>
         private void Init()
         {
             controller = new FrmAuthentificationController();
         }
+        /// <summary>
+        /// demande au controleur de controler l'authentification
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConnecter_Click(object sender, EventArgs e)
         {
             String login = txtLogin.Text;

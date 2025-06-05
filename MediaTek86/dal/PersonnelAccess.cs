@@ -59,30 +59,38 @@ namespace MediaTek86.dal
         public List<Personnel> GetLesPersonnels()
         {
             List<Personnel> lesPersonnels = new List<Personnel>();
-            if (access.Manager != null)
+            string req = @"SELECT p.idpersonnel, p.nom, p.prenom, 
+                  COALESCE(p.tel, '') as tel, 
+                  COALESCE(p.mail, '') as mail, 
+                  s.idservice, s.nom as service
+                  FROM personnel p 
+                  JOIN service s ON p.idservice = s.idservice
+                  ORDER BY p.idpersonnel";
+
+            try
             {
-                string req = "select p.idpersonnel as idpersonnel, p.nom as nom, p.prenom as prenom, p.tel as tel, p.mail as mail, s.service as idservice, s.nom as service";
-                req += "from personnel p join service s on (p.idservice = s.idservice)";
-                req += "order by idpersonnel;";
-                try
+                List<object[]> records = access.Manager.ReqSelect(req);
+                foreach (object[] record in records)
                 {
-                    List<Object[]> records = access.Manager.ReqSelect(req);
-                    if (records != null)
-                    {
-                        foreach (Object[] record in records)
-                        {
-                            Service service = new Service((int)record[5], (string)record[6]);
-                            Personnel personnel = new Personnel((int)record[0], (string)record[1], (string)record[2],
-                            (string)record[3], (string)record[4], service);
-                            lesPersonnels.Add(personnel);
-                        }
-                    }
+                    Personnel personnel = new Personnel(
+                        idpersonnel: Convert.ToInt32(record[0]),
+                        nom: record[1].ToString(),
+                        prenom: record[2].ToString(),
+                        tel: record[3].ToString(), // Gère déjà les NULL via COALESCE
+                        mail: record[4].ToString(),
+                        service: new Service(
+                            idservice: Convert.ToInt32(record[5]),
+                            nom: record[6].ToString()
+                        )
+                    );
+                    lesPersonnels.Add(personnel);
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    Environment.Exit(0);
-                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erreur accès BD : " + e.Message);
+                // Retourner une liste vide plutôt qu'arrêter l'application
+                return new List<Personnel>();
             }
             return lesPersonnels;
         }
@@ -116,7 +124,7 @@ namespace MediaTek86.dal
         {
             if (access.Manager != null)
             {
-                string req = "insert into developpeur(nom, prenom, tel, mail, idservice) ";
+                string req = "insert into personnel(nom, prenom, tel, mail, idservice) ";
                 req += "values (@nom, @prenom, @tel, @mail, @idservice);";
                 Dictionary<string, object> parameters = new Dictionary<string, object>();
                 parameters.Add("@nom", personnel.Nom);
