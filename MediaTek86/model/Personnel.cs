@@ -8,6 +8,15 @@ namespace MediaTek86.model
 {
     public class Personnel
     {
+        /// <summary>
+        /// valorise les propriétés
+        /// </summary>
+        /// <param name="idpersonnel"></param>
+        /// <param name="nom"></param>
+        /// <param name="prenom"></param>
+        /// <param name="tel"></param>
+        /// <param name="mail"></param>
+        /// <param name="service"></param>
         public Personnel(int idpersonnel, string nom, string prenom, string tel, string mail, Service service)
         {
             this.Idpersonnel = idpersonnel;

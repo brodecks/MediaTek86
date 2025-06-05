@@ -100,6 +100,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BddManager\BddManager.cs" />
+    <Compile Include="controller\FrmAuthentificationController.cs" />
+    <Compile Include="controller\FrmMediatek86Controller.cs" />
     <Compile Include="dal\Access.cs" />
     <Compile Include="dal\PersonnelAccess.cs" />
     <Compile Include="dal\ServiceAccess.cs" />
@@ -158,8 +160,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

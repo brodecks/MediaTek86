@@ -37,55 +37,62 @@
             // 
             // btnConnecter
             // 
-            this.btnConnecter.Location = new System.Drawing.Point(80, 78);
+            this.btnConnecter.Location = new System.Drawing.Point(107, 96);
+            this.btnConnecter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnConnecter.Name = "btnConnecter";
-            this.btnConnecter.Size = new System.Drawing.Size(83, 23);
+            this.btnConnecter.Size = new System.Drawing.Size(111, 28);
             this.btnConnecter.TabIndex = 0;
             this.btnConnecter.Text = "Se connecter";
             this.btnConnecter.UseVisualStyleBackColor = true;
+            this.btnConnecter.Click += new System.EventHandler(this.btnConnecter_Click);
             // 
             // txtPwd
             // 
-            this.txtPwd.Location = new System.Drawing.Point(80, 48);
+            this.txtPwd.Location = new System.Drawing.Point(107, 59);
+            this.txtPwd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPwd.Name = "txtPwd";
-            this.txtPwd.Size = new System.Drawing.Size(100, 20);
+            this.txtPwd.Size = new System.Drawing.Size(132, 22);
             this.txtPwd.TabIndex = 1;
             // 
             // txtLogin
             // 
-            this.txtLogin.Location = new System.Drawing.Point(80, 22);
+            this.txtLogin.Location = new System.Drawing.Point(107, 27);
+            this.txtLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(100, 20);
+            this.txtLogin.Size = new System.Drawing.Size(132, 22);
             this.txtLogin.TabIndex = 2;
             // 
             // lblLogin
             // 
             this.lblLogin.AutoSize = true;
-            this.lblLogin.Location = new System.Drawing.Point(24, 22);
+            this.lblLogin.Location = new System.Drawing.Point(32, 27);
+            this.lblLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLogin.Name = "lblLogin";
-            this.lblLogin.Size = new System.Drawing.Size(29, 13);
+            this.lblLogin.Size = new System.Drawing.Size(36, 16);
             this.lblLogin.TabIndex = 3;
             this.lblLogin.Text = "login";
             // 
             // lblPwd
             // 
             this.lblPwd.AutoSize = true;
-            this.lblPwd.Location = new System.Drawing.Point(24, 51);
+            this.lblPwd.Location = new System.Drawing.Point(32, 63);
+            this.lblPwd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPwd.Name = "lblPwd";
-            this.lblPwd.Size = new System.Drawing.Size(27, 13);
+            this.lblPwd.Size = new System.Drawing.Size(32, 16);
             this.lblPwd.TabIndex = 4;
             this.lblPwd.Text = "pwd";
             // 
             // FrmAuthentification
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(208, 115);
+            this.ClientSize = new System.Drawing.Size(277, 142);
             this.Controls.Add(this.lblPwd);
             this.Controls.Add(this.lblLogin);
             this.Controls.Add(this.txtLogin);
             this.Controls.Add(this.txtPwd);
             this.Controls.Add(this.btnConnecter);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmAuthentification";
             this.Text = "Connexion";
             this.ResumeLayout(false);

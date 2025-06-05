@@ -7,11 +7,18 @@ using System.Threading.Tasks;
 
 namespace MediaTek86.dal
 {
+    /// <summary>
+    /// classe permettant de gérer les demandes concernant les personnels
+    /// </summary>
     public class PersonnelAccess
     {
-        //instance unique d l'accès au données
+        /// <summary>
+        /// instance unique d l'accès au données
+        /// </summary>
         private readonly Access access = null;
-        //constructeur pour créer l'accès aux données
+        /// <summary>
+        /// constructeur pour créer l'accès aux données
+        /// </summary>
         public PersonnelAccess()
         {
             access = Access.GetInstance();
@@ -25,7 +32,7 @@ namespace MediaTek86.dal
         {
             if (access.Manager != null)
             {
-                string req = "select * from responsable where login = @login and pwd = SH2(@pwd, 256);";
+                string req = "select * from responsable where login = @login and pwd = SHA2(@pwd, 256);";
                 Dictionary<string, object> parameters = new Dictionary<string, object>();
                 parameters.Add("@login", responsable.Login);
                 parameters.Add("@pwd", responsable.Pwd);
@@ -46,7 +53,7 @@ namespace MediaTek86.dal
             return false;
         }
         /// <summary>
-        /// Récupère et retourne les développeurs
+        /// Récupère et retourne les personnels
         /// </summary>
         /// <returns></returns>
         public List<Personnel> GetLesPersonnels()
@@ -78,6 +85,83 @@ namespace MediaTek86.dal
                 }
             }
             return lesPersonnels;
+        }
+        /// <summary>
+        /// Demande de suppression d'un personnel
+        /// </summary>
+        /// <param name="personnel"></param>
+        public void DelPersonnel(Personnel personnel)
+        {
+            if (access.Manager != null)
+            {
+                string req = "delete from personnel where idpersonnel = @idpersonnel";
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                parameters.Add("@idpersonnel", personnel.Idpersonnel);
+                try
+                {
+                    access.Manager.ReqUpdate(req, parameters);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Environment.Exit(0);
+                }
+            }
+        }
+        /// <summary>
+        /// Demande d'ajout un personnel
+        /// </summary>
+        /// <param name="personnel"></param>
+        public void AddPersonnel(Personnel personnel)
+        {
+            if (access.Manager != null)
+            {
+                string req = "insert into developpeur(nom, prenom, tel, mail, idservice) ";
+                req += "values (@nom, @prenom, @tel, @mail, @idservice);";
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                parameters.Add("@nom", personnel.Nom);
+                parameters.Add("@prenom", personnel.Prenom);
+                parameters.Add("@tel", personnel.Tel);
+                parameters.Add("@mail", personnel.Mail);
+                parameters.Add("@idservice", personnel.Service.Idservice);
+                try
+                {
+                    access.Manager.ReqUpdate(req, parameters);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Environment.Exit(0);
+                }
+            }
+        }
+        /// <summary>
+        /// Demande de modification d'un personnel
+        /// </summary>
+        /// <param name="personnel"></param>
+        public void UpdatePersonnel(Personnel personnel)
+        {
+            if (access.Manager != null)
+            {
+                string req = "update personnel set nom = @nom, prenom = @prenom, tel = @tel, mail = @mail, idservice = @idservice";
+                req += "where idpersonnel = @idpersonnel;";
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                parameters.Add("idpersonnel", personnel.Idpersonnel);
+                parameters.Add("@nom", personnel.Nom);
+                parameters.Add("@prenom", personnel.Prenom);
+                parameters.Add("@tel", personnel.Tel);
+                parameters.Add("@mail", personnel.Mail);
+                parameters.Add("@idservice", personnel.Service.Idservice);
+                try
+                {
+                    access.Manager.ReqUpdate(req, parameters);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Environment.Exit(0);
+                }
+            }
         }
     }
 }
